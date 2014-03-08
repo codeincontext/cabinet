@@ -39,6 +39,7 @@ if (Meteor.isClient) {
       if (situationsToResolve.length) {
         situationsToResolve.forEach(function(situation) {
           Situations.remove(situation._id);
+          // TODO: Make a new situation for each user
         });
         console.log('yay!');
       } else {
@@ -79,6 +80,6 @@ if (Meteor.isServer) {
     var activeTasks = Tasks.find({active: true}).fetch();
     var randomID = Math.floor((Math.random()*activeTasks.length));
     var task = activeTasks[randomID];
-    Situations.insert({taskID: task._id, name: task.name});
+    Situations.insert({taskID: task._id, name: task.name, user_id: null});
   }
 }
