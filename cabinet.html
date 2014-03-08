@@ -1,20 +1,70 @@
 <head>
-  <title>cabinet</title>
+  <meta charset="UTF-8">
+  <title>Cabinet</title>
+  <link rel="stylesheet" href="css/cabinet.css">
 </head>
 
 <body>
-
 </body>
 
 
+<template name="signup">
+  <div class="signup__area">
+    <div class="paper signup__paper">
+      <h1>CABINET</h1>
+      <h2>APPLICATION TO JOIN</h2>
+      <form action="">
+        <div class="signup__input__wrap">
+          <label for="firstname">Your First Name</label>
+          <input type="text" id="firstname" placeholder="Your First Name">
+        </div>
+        <div class="signup__input__wrap">
+          <label for="firstname">Your Surname</label>
+          <input type="text" id="surname" placeholder="Your Surname">
+        </div>
+        <div class="signup__input__wrap">
+          <button type="submit">APPROVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="playArea">
+  <div class="play__area">
+    <div class="drawer">
+      
+    </div>
+    <div class="control_area paper">
+      <h3 class="control__title">
+        Tasks assigned to you
+      </h3>
+      <div class="control__buttons">
+        hi put buttons here
+      </div>
+      <div class="control__signoff control__signoff--hide">
+        <span class="control__signoff__name">
+          {{signature}}
+        </span>
+        <div class="control__signoff__coverup">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <template name="situation">
-  <div class="situation" data-id="{{_id}}">
-    <h3>{{name}}</h3>
+  <div class="paper drawer__paper">
+    <span id="situation_name" class="drawer__title" data-id="{{_id}}">
+      {{name}}
+    </span>
+    <p class="drawer__nonsense">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, sit, pariatur debitis expedita fugiat voluptas deleniti dolorem odit. Quos, dolores cumque obcaecati numquam sapiente? Accusantium, adipisci, debitis, id, animi vero labore officiis libero perspiciatis enim rem ratione cupiditate dolor dicta.</p>
   </div>
 </template>
 
 <template name="task">
-  <div class="task-button" data-id="{{_id}}">
-    <h3>{{name}}</h3>
+  <div class="button approved" data-id="{{_id}}">
+    {{name}}
   </div>
 </template>
