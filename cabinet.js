@@ -24,6 +24,7 @@ if (Meteor.isClient) {
       var taskCount = Tasks.find().count();
       var randomID = Math.floor((Math.random()*taskCount));
       var task = Tasks.findOne({}, {skip: randomID});
+      Tasks.update(task._id, {$set: {active: true}});
 
       var button = Meteor.render(Template.task(task));
       $('body').append(button);
@@ -69,5 +70,15 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
+    Meteor.setInterval(function () {
+      createSituation();
+    }, 8000);
   });
+
+  function createSituation() {
+    var activeTasks = Tasks.find({active: true}).fetch();
+    var randomID = Math.floor((Math.random()*activeTasks.length));
+    var task = activeTasks[randomID];
+    Situations.insert({taskID: task._id, name: task.name});
+  }
 }
