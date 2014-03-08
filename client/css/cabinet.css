@@ -16,7 +16,7 @@ blockquote:before, blockquote:after, q:before, q:after { content: ''; content: n
 
 table { border-collapse: collapse; border-spacing: 0; }
 
-body { font-family: Arial, sans-serif; background: #ccc; }
+body { font-family: Arial, sans-serif; background: white; }
 
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -48,7 +48,8 @@ body { font-family: Arial, sans-serif; background: #ccc; }
 .control__signoff:after, .control__signoff:before { content: ""; bottom: 0; left: 0; height: 30%; width: 1px; display: block; position: absolute; background: #000; }
 .control__signoff:after { left: auto; right: 0; }
 .control__signoff .control__signoff__name { font-family: 'Mrs Saint Delafield', cursive; width: 100%; position: absolute; bottom: -10px; left: 1px; padding: 0 10px; text-align: center; font-size: 40px; }
-.control__signoff .control__signoff__coverup { height: 100%; position: absolute; bottom: 1px; left: 1px; width: 100%; background: #f5f4ed; }
+.control__signoff .control__signoff__coverup { height: 100%; position: absolute; bottom: 1px; right: 1px; background: #f5f4ed; width: 100%; -webkit-transition: width 2s ease; -moz-transition: width 2s ease; transition: width 2s ease; }
+.control__signoff.show .control__signoff__coverup { width: 0%; }
 
 .signup__paper { width: 90%; height: 90%; margin: 10px auto 0 auto; padding: 40px 10px 20px 10px; -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8); box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.8); }
 .signup__paper h2, .signup__paper h1 { text-align: center; margin-bottom: 20px; font-weight: bold; }

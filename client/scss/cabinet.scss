@@ -7,7 +7,7 @@ $papercolor: #F5F4ED;
 
 body{
   font-family:Arial, sans-serif;
-  background:#ccc;
+  background:white;
 }
 
 *, *:before, *:after {
@@ -168,10 +168,18 @@ body{
     height:100%;
     position:absolute;
     bottom:1px;
-    left:1px;
-    width:100%;
+    right:1px;
     background:$papercolor;
+    width:100%;
+    @include transition (width 2.0s ease);
+  }
 
+  // none of this works, fuck
+
+  &.show{
+    .control__signoff__coverup{
+      width:0%;
+    }
   }
 }
 
