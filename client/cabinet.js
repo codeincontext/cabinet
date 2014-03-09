@@ -44,7 +44,7 @@ function handleSignup() {
     console.log('player updated:');
     console.log(player);
     $('.player__score').text(player.score.toString());
-    $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + player.lastName);
+    $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + ' ' + player.lastName);
   });
 
 }

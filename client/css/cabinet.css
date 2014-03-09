@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Herr+Von+Muellerhoff);
+@import url(http://fonts.googleapis.com/css?family=Mrs+Saint+Delafield);
 /* http://meyerweb.com/eric/tools/css/reset/  v2.0 | 20110126 License: none (public domain)
 */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
@@ -145,7 +145,7 @@ table { border-collapse: collapse; border-spacing: 0; }
 .control__signoff { width: 90%; margin: 0 auto; border-bottom: 1px solid #000; height: 60px; position: relative; }
 .control__signoff:after, .control__signoff:before { content: ""; bottom: 0; left: 0; height: 30%; width: 1px; display: block; position: absolute; background: #000; }
 .control__signoff:after { left: auto; right: 0; }
-.control__signoff .control__signoff__name { font-family: 'Mrs Saint Delafield', cursive; width: 100%; position: absolute; bottom: -10px; left: 1px; padding: 0 10px; text-align: center; font-size: 40px; }
+.control__signoff .control__signoff__name { font-family: 'Mrs Saint Delafield', cursive; width: 100%; position: absolute; bottom: -10px; left: 1px; padding: 0 10px; text-align: center; font-size: 40px; text-transform: capitalize; }
 .control__signoff .control__signoff__coverup { height: 65px; position: absolute; bottom: -25px; right: 1px; background: #f5f4ed; width: 98%; }
 .control__signoff .control__signoff__coverup:after { width: 100%; height: 1px; background: black; position: absolute; bottom: 24px; left: 0; content: ""; display: block; }
 .control__signoff.show .control__signoff__coverup { -webkit-animation: showSignature 2s ease; -moz-animation: showSignature 2s ease; animation: showSignature 2s ease; }
@@ -159,7 +159,10 @@ table { border-collapse: collapse; border-spacing: 0; }
 .signup__input__wrap { display: block; margin-bottom: 20px; }
 .signup__input__wrap label { font-size: 16px; font-weight: bold; display: block; }
 .signup__input__wrap input, .signup__input__wrap button { width: 100%; font-size: 14px; padding: 10px 5px; }
-.signup__input__wrap button { display: block; background: rgba(0, 0, 0, 0.1); border: 1px solid #7a7a76; border-radius: 5px; }
+
+button.button { display: block; background: rgba(0, 0, 0, 0.1); border: 1px solid #7a7a76; border-radius: 5px; }
+
+.lobby__area .button { margin-top: 30px; }
 
 body { font-family: Arial, sans-serif; background: white; }
 
@@ -175,11 +178,11 @@ body, html { height: 100%; }
 
 .mobile-simulator { width: 320px; height: 480px; margin: 0 10px; float: left; }
 
-.play__area, .signup__area, .roundup__area, .lobby__area { background: url("../img/desk.png"); height: 100%; width: 100%; position: relative; overflow: hidden; }
-.play__area.hide, .signup__area.hide, .roundup__area.hide, .lobby__area.hide { display: none; }
+.play__area, .signup__area, .finish__area, .lobby__area { background: url("../img/desk.png"); height: 100%; width: 100%; position: relative; overflow: hidden; }
+.play__area.hide, .signup__area.hide, .finish__area.hide, .lobby__area.hide { display: none; }
 
 .play__area { -webkit-transition: box-shadow 100ms ease; -moz-transition: box-shadow 100ms ease; transition: box-shadow 100ms ease; -webkit-box-shadow: 0; box-shadow: 0; }
-.play__area.good { -webkit-box-shadow: inset 0 0 5px 5px rgba(35, 205, 67, 0.3); box-shadow: inset 0 0 5px 5px rgba(35, 205, 67, 0.3); }
-.play__area.bad { -webkit-box-shadow: inset 0 0 5px 5px rgba(163, 0, 6, 0.3); box-shadow: inset 0 0 5px 5px rgba(163, 0, 6, 0.3); }
+.play__area.good { -webkit-box-shadow: inset 0 0 5px 5px rgba(35, 205, 67, 0.5); box-shadow: inset 0 0 5px 5px rgba(35, 205, 67, 0.5); }
+.play__area.bad { -webkit-box-shadow: inset 0 0 5px 5px rgba(163, 0, 6, 0.5); box-shadow: inset 0 0 5px 5px rgba(163, 0, 6, 0.5); }
 
 .paper { background: #f5f4ed; }

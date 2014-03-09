@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Mrs+Saint+Delafield|Herr+Von+Muellerhoff);
+@import url(http://fonts.googleapis.com/css?family=Mrs+Saint+Delafield);
 
 @import "bourbon/bourbon";
 @import "util";
@@ -50,7 +50,7 @@ body, html{
     float:left;
   }
 
-.play__area, .signup__area, .roundup__area, .lobby__area{
+.play__area, .signup__area, .finish__area, .lobby__area{
   background:url('../img/desk.png');
   height:100%;
   width:100%;
@@ -67,14 +67,16 @@ body, html{
   -webkit-box-shadow:0;
   box-shadow:0;
 
+  $opacity: 0.5;
+
   &.good{
-    -webkit-box-shadow:inset 0 0 5px 5px rgba(#23CD43,0.3);
-    box-shadow:inset 0 0 5px 5px rgba(#23CD43,0.3);
+    -webkit-box-shadow:inset 0 0 5px 5px rgba(#23CD43,$opacity);
+    box-shadow:inset 0 0 5px 5px rgba(#23CD43,$opacity);
   }
 
   &.bad{
-    -webkit-box-shadow:inset 0 0 5px 5px rgba(#A30006,0.3);
-    box-shadow:inset 0 0 5px 5px rgba(#A30006,0.3);
+    -webkit-box-shadow:inset 0 0 5px 5px rgba(#A30006,$opacity);
+    box-shadow:inset 0 0 5px 5px rgba(#A30006,$opacity);
   }
 }
 
