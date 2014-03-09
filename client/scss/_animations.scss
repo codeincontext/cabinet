@@ -1,0 +1,21 @@
+@include keyframes(showSignature) {
+  0% {
+    width:98%;
+    opacity:1;
+  }
+  49% {
+    width:0%;
+    opacity:1;
+  }
+  50%{
+    opacity:0;
+  }
+  51%{
+    width:98%;
+    opacity:0;
+  }
+  100%{
+    opacity:1;
+    width:98%;
+  }
+}
