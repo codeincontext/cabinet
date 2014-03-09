@@ -34,4 +34,11 @@
     font-size:14px;
     padding:10px 5px;
   }
+
+  button{
+    display:block;
+    background:rgba(0,0,0,0.1);
+    border:1px solid mix(black, $papercolor);
+    border-radius:5px;
+  }
 }
