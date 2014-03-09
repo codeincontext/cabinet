@@ -125,6 +125,7 @@
 
     &.approved{
       &:after{
+        opacity:1;
         display:block;
         @include animation(approveStamp $animationLength ease);
       }
@@ -174,12 +175,23 @@
   }
 
   .control__signoff__coverup{
-    height:100%;
+    height:65px;
     position:absolute;
-    bottom:1px;
+    bottom:-25px;
     right:1px;
     background:$papercolor;
     width:98%;
+
+    &:after{
+      width:100%;
+      height:1px;
+      background:black;
+      position:absolute;
+      bottom:24px;
+      left:0;
+      content:"";
+      display:block;
+    }
   }
 
   &.show{
