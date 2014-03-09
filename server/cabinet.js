@@ -1,5 +1,4 @@
-Meteor.startup(function () {
-
+function start() {
   Tasks.remove({})
   Players.remove({})
   Games.remove({})
@@ -13,8 +12,14 @@ Meteor.startup(function () {
   }
   if (Games.find().count() == 0) {
     console.log("Games list is empty. Populating from file");
-    Games.insert({started: false});
+    Games.insert({started: false, finished: false});
   }
+
+}
+
+Meteor.startup(function () {
+
+  start();
 
   Meteor.publish("tasks", function () {
     return Tasks.find({});
@@ -40,10 +45,7 @@ Meteor.startup(function () {
   // code to run on server at startup
   Meteor.methods({
     removeAll: function() {
-      Tasks.remove({});
-      Players.remove({});
-      Situations.remove({});
-      Games.remove({});
+      start();
     }
   });
 });

@@ -10,16 +10,17 @@
 </body>
 
 
-
 <template name="finish">
   <div class="finish__area hide">
     <div class="paper signup__paper">
       <h1>FINISHED!</h1>
       <h2></h2>
-      <ul>
+      <ul class="players">
       </ul>
     </div>
   </div>
 </template>
 
-
+<template name="playerWithScore">
+<li class="player">{{firstName}} {{lastName}} - {{score}}</li>
+</template>

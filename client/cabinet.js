@@ -43,6 +43,7 @@ function handleSignup() {
     var player = Players.findOne({_id:player_id});
     console.log('player updated:');
     console.log(player);
+    $('.player__score').text(player.score.toString());
     $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + player.lastName);
   });
 
@@ -57,7 +58,6 @@ function transitionToLobby() {
     Players.find({active: true}).forEach(function(player) {
       var playerFragment = Meteor.render(Template.player(player));
       $('.lobby__area .players').append(playerFragment);
-      $('.player__score').text(player.score.toString());
     });
 
   });
@@ -76,7 +76,17 @@ function transitionToLobby() {
 function startGame() {
   var game = Games.findOne({});
   Games.update(game._id, {started: true});
+
+  Meteor.setTimeout(function() {
+    Games.update(game._id, {finished: true});
+
+    Meteor.setTimeout(function() {
+      Meteor.call('removeAll');
+    }, 5*1000);
+
+  }, 60*1000);
 }
+
 
 function loadGameScreen() {
   $('.lobby__area').addClass('hide');
@@ -144,6 +154,41 @@ function loadGameScreen() {
     });
 
     var situation = createSituationForPlayer(Session.get('player_id'));
+  });
+
+  var haveAlreadyFinished = false;
+  Deps.autorun(function (c) {
+    var game = Games.findOne();
+    console.log('checking for finish')
+    
+    if (game.finished && !haveAlreadyFinished) {
+      transitionToFinishScreen();
+      haveAlreadyFinished = true;
+    }
+  });
+
+  Meteor.setInterval(function() {
+    var haveAlreadyFinished = false;
+    var game = Games.findOne();
+    console.log('checking for finish')
+    
+    if (game.finished && !haveAlreadyFinished) {
+      transitionToFinishScreen();
+      haveAlreadyFinished = true;
+    }
+  },100);
+}
+
+
+function transitionToFinishScreen() {
+  console.log('loading finish screen')
+  $('.play__area').addClass('hide');
+  $('.finish__area').removeClass('hide');
+
+  $('.finish__area .players').empty();
+  Players.find({active: true}, {sort: {score: -1}}).forEach(function(player) {
+    var playerFragment = Meteor.render(Template.playerWithScore(player));
+    $('.finish__area .players').append(playerFragment);
   });
 }
 
