@@ -48,8 +48,9 @@ function createSituationForPlayer(player_id) {
   }
 
   function loadGameScreen() {
-    var gameScreen = Meteor.render(Template.playArea);
-    $('body').html(gameScreen);
+    $('.signup__area').addClass('hide');
+    $('.lobby__area').addClass('hide');
+    $('.play__area').removeClass('hide');
 
     Meteor.subscribe('tasks', function () {
 
