@@ -43,7 +43,7 @@ function handleSignup() {
     var player = Players.findOne({_id:player_id});
     console.log('player updated:');
     console.log(player);
-    $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + player.lastName);
+    $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + ' ' + player.lastName);
   });
 
 }
