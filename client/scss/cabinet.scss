@@ -17,6 +17,10 @@ body{
   background:white;
 }
 
+body, html{
+  height:100%;
+}
+
 .clearfix:before,
 .clearfix:after {
     content: " ";
