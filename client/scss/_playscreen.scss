@@ -58,8 +58,17 @@
     display:inline-block;
     margin:5px;
     text-align: center;
-    padding:40px 5px 5px 5px;
+    padding:5px;
     position:relative;
+
+    span{
+      display:block;
+      width:100%;
+      height:auto;
+      position:absolute;
+      padding:0 5px;
+      @include vertical-align();
+    }
 
     &.approved{
       &:after{
