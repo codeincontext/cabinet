@@ -86,9 +86,18 @@ function createSituationForPlayer(player_id) {
 
             Players.update({_id: situation.player_id}, {$inc: {score: 1}});
             Players.update({_id: Session.get('player_id')}, {$inc: {score: 1}});
+
+            $('.play__area').addClass('good');
+            Meteor.setTimeout(function() {
+              $('.play__area').removeClass('good');
+            }, 2000);
           });
         } else {
           Players.update({_id: Session.get('player_id')}, {$inc: {score: -1}});
+          $('.play__area').addClass('bad');
+          Meteor.setTimeout(function() {
+            $('.play__area').removeClass('bad');
+          }, 2000);
         }
       });
 
