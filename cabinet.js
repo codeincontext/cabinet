@@ -9,7 +9,17 @@ function createSituationForPlayer(player_id) {
   var activeTasks = Tasks.find({active: true}).fetch();
   var randomID = Math.floor((Math.random()*activeTasks.length));
   var task = activeTasks[randomID];
-  Situations.insert({taskID: task._id, name: task.name, player_id: player_id});
+  var situationId = Situations.insert({taskID: task._id, name: task.name, player_id: player_id});
+
+  Meteor.setTimeout(function() {
+    if (Situations.find({_id: situationId}).count()) {
+      Situations.remove({_id: situationId});
+      Players.update({_id: task.player_id}, {$inc: {score: -1}});
+      Players.update({_id: player_id}, {$inc: {score: -1}});
+
+      createSituationForPlayer(player_id);
+    }
+  }, 8000);
 }
 
 if (Meteor.isClient) {
@@ -33,7 +43,7 @@ if (Meteor.isClient) {
       var randomID = Math.floor((Math.random()*inactiveTasks.length));
       var task = inactiveTasks[randomID];
 
-      Tasks.update(task._id, {$set: {active: true}});
+      Tasks.update(task._id, {$set: {active: true, player_id: Session.get('player_id')}});
 
       var button = Meteor.render(Template.task(task));
       $('.control__buttons').append(button);
