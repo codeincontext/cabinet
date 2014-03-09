@@ -46,7 +46,7 @@
 }
 
 .control__buttons{
-  width:280px;
+  width:270px;
   margin:0 auto;
 
   .button{
@@ -60,6 +60,7 @@
     text-align: center;
     padding:5px;
     position:relative;
+    float:left;
 
     span{
       display:block;
