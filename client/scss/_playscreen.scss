@@ -70,23 +70,32 @@
       @include vertical-align();
     }
 
+    &:after{
+      position:absolute;
+      top:50%;
+      margin-top:-42px;
+      left:50%;
+      margin-left:-75px;
+      width:150px;
+      height:85px;
+      content:"";
+      display:none;
+      opacity:0;
+
+      background:{
+        image:url('../img/approved.png');
+        repeat:no-repeat;
+      }
+
+    }
+
     &.approved{
       &:after{
-        position:absolute;
-        top:50%;
-        margin-top:-42px;
-        left:50%;
-        margin-left:-75px;
-        width:150px;
-        height:85px;
-        content:"";
         display:block;
-        background:{
-          image:url('../img/approved.png');
-          repeat:no-repeat;
-        }
+        @include animation(approveStamp $animationLength ease);
       }
     }
+
   }
 
   .break-buttons{
@@ -141,7 +150,7 @@
 
   &.show{
     .control__signoff__coverup{
-      @include animation(showSignature 2.0s ease);
+      @include animation(showSignature $animationLength ease);
     }
   }
 }

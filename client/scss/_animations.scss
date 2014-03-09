@@ -19,3 +19,18 @@
     width:98%;
   }
 }
+
+@include keyframes(approveStamp) {
+  0%{
+    opacity:0;
+    @include transform(scale(1.1) rotate(-5deg));
+  }
+  20%{
+    opacity:1;
+    @include transform(scale(1) rotate(0deg));
+  }
+  100%{
+    opacity:0;
+    @include transform(scale(1) rotate(0deg));
+  }
+}

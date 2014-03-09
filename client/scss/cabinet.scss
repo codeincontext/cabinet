@@ -5,11 +5,11 @@
 @import "reset";
 
 $papercolor: #F5F4ED;
+$animationLength: 2s;
 
 @import "animations";
 @import "playscreen";
 @import "signup";
-
 
 body{
   font-family:Arial, sans-serif;
