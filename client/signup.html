@@ -1,0 +1,33 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Cabinet</title>
+  <link rel="stylesheet" href="css/cabinet.css">
+</head>
+
+<body>
+  {{>signup}}
+</body>
+
+
+<template name="signup">
+  <div class="signup__area">
+    <div class="paper signup__paper">
+      <h1>CABINET</h1>
+      <h2>APPLICATION TO JOIN</h2>
+      <form id="signupForm" action="">
+        <div class="signup__input__wrap">
+          <label for="firstname">Firstname</label>
+          <input type="text" name="firstName" id="firstname" placeholder="Your First Name">
+        </div>
+        <div class="signup__input__wrap">
+          <label for="surname">Surname</label>
+          <input type="text" name="lastName" id="surname" placeholder="Your Surname">
+        </div>
+        <div class="signup__input__wrap">
+          <input id="submit" type="submit" value="approve">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</template>
