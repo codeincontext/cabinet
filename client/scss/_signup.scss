@@ -1,0 +1,37 @@
+.signup__paper{
+  width:90%;
+  height:90%;
+  margin:10px auto 0 auto;
+  padding:40px 10px 20px 10px;
+
+  -webkit-box-shadow: 0 0 5px 0 rgba(#000000, 0.8);
+  box-shadow: 0 0 5px 0 rgba(#000000, 0.8);
+
+  h2, h1{
+    text-align: center;
+    margin-bottom:20px;
+    font-weight: bold;
+  }
+
+  h1{
+    font-size:40px;
+    margin-bottom:0;
+  }
+}
+
+.signup__input__wrap{
+  display:block;
+  margin-bottom:20px;
+
+  label{
+    font-size:16px;
+    font-weight: bold;
+    display:block;
+  }
+
+  input, button{
+    width:100%;
+    font-size:14px;
+    padding:10px 5px;
+  }
+}
