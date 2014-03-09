@@ -16,9 +16,17 @@
     <div class="paper signup__paper">
       <h1>WAITING</h1>
       <h2>WAITING FOR OTHER MPs</h2>
-      <ul>
+      <ul class="players">
       </ul>
+      <form id="waitingForm" action="">
+        <div class="signup__input__wrap">
+          <input id="submit" type="submit" value="Start Game!">
+        </div>
+      </form>
     </div>
   </div>
 </template>
 
+<template name="player">
+<li class="player">{{firstName}} {{lastName}}</li>
+</template>
