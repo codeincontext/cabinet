@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  {{>playArea}}
+  {{>signup}}
 </body>
 
 
@@ -14,17 +14,17 @@
     <div class="paper signup__paper">
       <h1>CABINET</h1>
       <h2>APPLICATION TO JOIN</h2>
-      <form action="">
+      <form id="signupForm" action="">
         <div class="signup__input__wrap">
-          <label for="firstname">Your First Name</label>
-          <input type="text" id="firstname" placeholder="Your First Name">
+          <label for="firstname">Firstname</label>
+          <input type="text" name="firstName" id="firstname" placeholder="Your First Name">
         </div>
         <div class="signup__input__wrap">
-          <label for="firstname">Your Surname</label>
-          <input type="text" id="surname" placeholder="Your Surname">
+          <label for="surname">Surname</label>
+          <input type="text" name="lastName" id="surname" placeholder="Your Surname">
         </div>
         <div class="signup__input__wrap">
-          <button type="submit">APPROVE</button>
+          <input id="submit" type="submit" value="approve">
         </div>
       </form>
     </div>
@@ -46,7 +46,7 @@
           {{signature}}
         </span>
         <div class="control__signoff__coverup">
-          
+
         </div>
       </div>
     </div>

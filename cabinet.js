@@ -12,16 +12,47 @@ function createSituationForPlayer(player_id) {
   Situations.insert({taskID: task._id, name: task.name, player_id: player_id});
 }
 
-if (Meteor.isClient) {
-  Meteor.startup(function () {
-    var player_id = Players.insert({name: 'Bob', idle: false, score: 0});
-    Session.set('player_id', player_id);
 
-    Deps.autorun(function () {
-      var player = Players.findOne({_id:player_id});
-      console.log('player updated:');
-      console.log(player);
-    });
+function handleSignup() {
+  var form = {};
+
+  $.each($('#signupForm').serializeArray(), function() {
+    form[this.name] = this.value;
+  });
+
+  form.idle = false;
+  form.score = 0;
+
+  console.log('FORM', form);
+
+  var player_id = Players.insert(form, function(err) {
+    if(!err) {
+      $('#signupForm')[0].reset();
+    } else {
+      console.log(err);
+    }
+  });
+
+  Session.set('player_id', player_id);
+
+  Deps.autorun(function () {
+    var player = Players.findOne({_id:player_id});
+    console.log('player updated:');
+    console.log(player);
+  });
+
+}
+
+if (Meteor.isClient) {
+
+  Template.signup.events({'submit' : function(event) {
+    event.preventDefault();
+    handleSignup();
+  }});
+
+
+  Meteor.startup(function () {
+
   });
 
   Meteor.subscribe('tasks', function () {
@@ -76,7 +107,7 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('players', function () {
-  
+
   });
 
 }
