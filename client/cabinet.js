@@ -43,6 +43,7 @@ function createSituationForPlayer(player_id) {
       console.log('player updated:');
       console.log(player);
       $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + player.lastName);
+      $('.player__score').text(player.score.toString());
     });
 
   }

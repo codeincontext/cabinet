@@ -40,7 +40,7 @@
       @include animation(shredPaper $timeToAct linear);
     }
     .shredder__effect{
-      display:block;  
+      display:block;
       @include animation(shredEffect $timeToAct linear);
     }
   }
@@ -198,4 +198,10 @@
       @include animation(showSignature $animationLength ease);
     }
   }
+}
+
+.player__score {
+  position:absolute;
+  top:120px;
+  left:20px;
 }
