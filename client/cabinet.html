@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  {{>playArea}}
+  {{>signup}}
 </body>
 
 
@@ -14,17 +14,17 @@
     <div class="paper signup__paper">
       <h1>CABINET</h1>
       <h2>APPLICATION TO JOIN</h2>
-      <form action="">
+      <form id="signupForm" action="">
         <div class="signup__input__wrap">
-          <label for="firstname">Your First Name</label>
-          <input type="text" id="firstname" placeholder="Your First Name">
+          <label for="firstname">Firstname</label>
+          <input type="text" name="firstName" id="firstname" placeholder="Your First Name">
         </div>
         <div class="signup__input__wrap">
-          <label for="firstname">Your Surname</label>
-          <input type="text" id="surname" placeholder="Your Surname">
+          <label for="surname">Surname</label>
+          <input type="text" name="lastName" id="surname" placeholder="Your Surname">
         </div>
         <div class="signup__input__wrap">
-          <button type="submit">APPROVE</button>
+          <input id="submit" type="submit" value="approve">
         </div>
       </form>
     </div>
@@ -46,7 +46,7 @@
           {{signature}}
         </span>
         <div class="control__signoff__coverup">
-          
+
         </div>
       </div>
     </div>
@@ -54,11 +54,14 @@
 </template>
 
 <template name="situation">
-  <div class="paper drawer__paper">
-    <span id="situation_name" class="drawer__title" data-id="{{_id}}">
-      {{name}}
-    </span>
-    <p class="drawer__nonsense">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, sit, pariatur debitis expedita fugiat voluptas deleniti dolorem odit. Quos, dolores cumque obcaecati numquam sapiente? Accusantium, adipisci, debitis, id, animi vero labore officiis libero perspiciatis enim rem ratione cupiditate dolor dicta.</p>
+  <div class="drawer__paper__wrap shred">
+    <div class="paper drawer__paper">
+      <span id="situation_name" class="drawer__title" data-id="{{_id}}">
+        {{name}}
+      </span>
+      <p class="drawer__nonsense">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, sit, pariatur debitis expedita fugiat voluptas deleniti dolorem odit. Quos, dolores cumque obcaecati numquam sapiente? Accusantium, adipisci, debitis, id, animi vero labore officiis libero perspiciatis enim rem ratione cupiditate dolor dicta.</p>
+    </div>
+    <div class="shredder__effect"></div>
   </div>
 </template>
 
