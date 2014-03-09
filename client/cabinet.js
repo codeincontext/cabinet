@@ -57,6 +57,7 @@ function transitionToLobby() {
     Players.find({active: true}).forEach(function(player) {
       var playerFragment = Meteor.render(Template.player(player));
       $('.lobby__area .players').append(playerFragment);
+      $('.player__score').text(player.score.toString());
     });
 
   });
@@ -113,9 +114,18 @@ function loadGameScreen() {
 
           Players.update({_id: situation.player_id}, {$inc: {score: 1}});
           Players.update({_id: Session.get('player_id')}, {$inc: {score: 1}});
+
+          $('.play__area').addClass('good');
+          Meteor.setTimeout(function() {
+            $('.play__area').removeClass('good');
+          }, 2000);
         });
       } else {
         Players.update({_id: Session.get('player_id')}, {$inc: {score: -1}});
+        $('.play__area').addClass('bad');
+        Meteor.setTimeout(function() {
+          $('.play__area').removeClass('bad');
+        }, 2000);
       }
     });
   });
