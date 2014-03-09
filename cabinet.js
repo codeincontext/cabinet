@@ -5,12 +5,12 @@ Situations = new Meteor.Collection('situations');
 
 
 
-  function createSituationForPlayer(player_id) {
-    var activeTasks = Tasks.find({active: true}).fetch();
-    var randomID = Math.floor((Math.random()*activeTasks.length));
-    var task = activeTasks[randomID];
-    Situations.insert({taskID: task._id, name: task.name, player_id: player_id});
-  }
+function createSituationForPlayer(player_id) {
+  var activeTasks = Tasks.find({active: true}).fetch();
+  var randomID = Math.floor((Math.random()*activeTasks.length));
+  var task = activeTasks[randomID];
+  Situations.insert({taskID: task._id, name: task.name, player_id: player_id});
+}
 
 if (Meteor.isClient) {
   Meteor.startup(function () {
@@ -40,7 +40,6 @@ if (Meteor.isClient) {
     // TODO: make this more reactive
     $('.button').on('click', function() {
       var taskID = $(this).data('id');
-      console.log('resolved task: ' + taskID);
 
       var situationsToResolve = Situations.find({taskID: taskID}).fetch();
       if (situationsToResolve.length) {
@@ -51,10 +50,8 @@ if (Meteor.isClient) {
           Players.update({_id: situation.player_id}, {$inc: {score: 1}});
           Players.update({_id: Session.get('player_id')}, {$inc: {score: 1}});
         });
-        console.log('yay!');
       } else {
         Players.update({_id: Session.get('player_id')}, {$inc: {score: -1}});
-        console.log('boo!');
       }
     });
 
@@ -63,17 +60,23 @@ if (Meteor.isClient) {
   });
 
   Meteor.subscribe('situations', function () {
-    var situation = createSituationForPlayer(Session.get('player_id'));
-
-    var situationFragment = Meteor.render(Template.situation(situation));
-    $('.drawer').append(situation);
-
     query = Situations.find({player_id: Session.get('player_id')});
     var handle = query.observeChanges({
       added: function (id, situation) {
         console.log("New situation");
+        console.log(situation);
+
+        var situationFragment = Meteor.render(Template.situation(situation));
+        $('.drawer').html(situationFragment);
+
       }
     });
+
+    var situation = createSituationForPlayer(Session.get('player_id'));
+  });
+
+  Meteor.subscribe('players', function () {
+  
   });
 
 }
@@ -84,7 +87,7 @@ if (Meteor.isServer) {
   if (Tasks.find().count() == 0) {
     console.log("Tasks list is empty. Populating from file");
     _.each(Assets.getText("tasks.txt").split("\n"), function (line) {
-      Tasks.insert({name: line, active: false});
+      if (line.length) Tasks.insert({name: line, active: false});
     });
   }
 
@@ -96,8 +99,8 @@ if (Meteor.isServer) {
     return Situations.find({});
   });
 
-  Meteor.publish("player", function (player_id) {
-    return Players.findOne({_id: player_id});
+  Meteor.publish("players", function () {
+    return Players.find({});
   });
 
   Meteor.onConnection(function () {
@@ -106,6 +109,13 @@ if (Meteor.isServer) {
 
   Meteor.startup(function () {
     // code to run on server at startup
-
+    Meteor.methods({
+      removeAll: function() {
+        Tasks.remove({});
+        Players.remove({});
+        Situations.remove({});
+      }
+    });
   });
 }
+
