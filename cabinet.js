@@ -39,6 +39,7 @@ function handleSignup() {
     var player = Players.findOne({_id:player_id});
     console.log('player updated:');
     console.log(player);
+    $('.control__signoff__name').text(player.firstName.charAt(0).toUpperCase() + player.lastName);
   });
 
 }
@@ -52,7 +53,6 @@ if (Meteor.isClient) {
 
 
   Meteor.startup(function () {
-
   });
 
   Meteor.subscribe('tasks', function () {
@@ -70,7 +70,15 @@ if (Meteor.isClient) {
 
     // TODO: make this more reactive
     $('.button').on('click', function() {
-      var taskID = $(this).data('id');
+      var $this = $(this);
+      var taskID = $this.data('id');
+
+      $this.addClass('approved');
+      $('.control__signoff').addClass('show');
+      Meteor.setTimeout(function() {
+        $this.removeClass('approved');
+        $('.control__signoff').removeClass('show');
+      }, 2000);
 
       var situationsToResolve = Situations.find({taskID: taskID}).fetch();
       if (situationsToResolve.length) {

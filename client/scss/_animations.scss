@@ -34,3 +34,47 @@
     @include transform(scale(1) rotate(0deg));
   }
 }
+
+@include keyframes(shredPaper){
+  $offset: 10px;
+  0%{
+    margin-top:-90px;
+    @include transform(scale(1.1));
+  }
+  5%{
+    margin-top:1px + $offset;
+    @include transform(scale(1));
+  }
+  40%{
+    margin-top:1px + $offset;
+    @include transform(translateX(0px) translateY(0px));
+  }
+  95%, 100%{
+    margin-top:90px + $offset;
+    @include transform(translateX(0px) translateY(0px));
+  }
+  45%, 55%, 65%, 75%, 85%{
+    @include transform(translateX(2px) translateY(0px));
+  }
+  46%, 56%, 66%, 76%, 86%{
+    @include transform(translateX(0px) translateY(0px));
+  }
+}
+
+@include keyframes(shredEffect){
+  0%, 39%{
+    opacity:0;
+  }
+  40%{
+    margin-top:25px;
+    opacity:1;
+  }
+  65%{
+    margin-top:10px;
+    opacity:1;
+  }
+  100%{
+    opacity:0;
+    margin-top:25px;
+  }
+}
