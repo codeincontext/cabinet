@@ -36,11 +36,22 @@ TV interview
 Newspaper thinkpiece
 Cap bonuses
 Reform business rates
-Set drinking age to 16/18/21/banned
-Set smoking age to 16/18/21/banned
-Set driving age to 16/18/21
+Set drinking age to 16
+Set drinking age to 18
+Set drinking age to 21
+Ban drinking
+Set smoking age to 16
+Set smoking age to 18
+Set smoking age to 21
+Ban smoking
+Set driving age to 16
+Set driving age to 18
+Set driving age to 21
 Adopt crypto-currency
-Ban crossbows/blu-tack/staplers/door knobs
+Ban crossbows
+Ban blu-tack
+Ban staplers
+Ban door knobs
 Declare national silly hat day
 Pioneer a cycling scheme
 Promote public transport
