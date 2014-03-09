@@ -46,12 +46,16 @@ body{
     float:left;
   }
 
-.play__area, .signup__area{
+.play__area, .signup__area, .roundup__area, .lobby__area{
   background:url('../img/desk.png');
   height:100%;
   width:100%;
   position:relative;
   overflow:hidden;
+
+  &.hide{
+    display:none;
+  }
 }
 
 .paper{
